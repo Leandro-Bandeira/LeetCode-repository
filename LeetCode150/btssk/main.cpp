@@ -55,7 +55,36 @@ public:
       }
       */
       return maxProfit;
-    }
+     }
+    int maxProfit3(vector<int>& prices){
+      int maxProfit = 0;
+      int indexSell = 0;
+      int indexBuy = 0;
+      int currentProfit = 0;
+      for(int i = 0; i < prices.size(); i++){
+        
+        
+        if(i < prices.size() - 1 && prices[i] <= prices[indexBuy]){
+          indexBuy = i;
+          if (indexBuy > indexSell){
+            indexSell = indexBuy;
+          }  
+        } 
+        
+        if(i >= indexBuy && prices[i] >= prices[indexSell]){
+          indexSell = i;
+        }
+        currentProfit = prices[indexSell] - prices[indexBuy];
+        if (currentProfit >= maxProfit){
+          maxProfit = currentProfit;
+      
+        }
+        
+      }
+      return maxProfit;
+     }
+         
+    
 };
 
 
